@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tarknaiev_order_export" engine="innodb" resource="default" comment="List of export orders log">
+        <column xsi:type="int" name="entity_id" padding="11" unsigned="false" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="order_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Order ID"/>
+        <column xsi:type="varchar" name="export_type" length="255" nullable="false" comment="Export type" />
+        <column xsi:type="varchar" name="result_status" length="255" nullable="true" comment="Export result status" />
+        <column xsi:type="text" name="result_message" nullable="true" comment="Export result message" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="true" default="CURRENT_TIMESTAMP" comment="Updated Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="TARKNAIEV_ORDER_EXPORT_ORDER_ID_SALES_ORDER_ENTITY_ID" table="tarknaiev_order_export" column="order_id" referenceTable="sales_order" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

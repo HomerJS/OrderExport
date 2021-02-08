@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_save_commit_after">
+        <observer name="tarknaiev_save_order_id_to_export" instance="Tarknaiev\ErpOrderExport\Observer\SaveOrderToExport"/>
+    </event>
+</config>
